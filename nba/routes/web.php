@@ -14,5 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('nbateam.index');
 });
+
+Route::resource('nbateam',nbateamcontroller::class);

@@ -29,6 +29,8 @@ class nbateamcontroller extends Controller
      */
     public function create()
     {
+        $nbateam = nbateam::all();
+        return view('nbaplayer.addplayer', compact('nbateam'));
         //
     }
 

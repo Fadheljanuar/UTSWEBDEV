@@ -14,6 +14,8 @@ class nbaplayercontroller extends Controller
      */
     public function index()
     {
+        $nbaplayer = nbaplayer::all();
+        return view('nbaplayer.index', compact('nbaplayer'));
         //
     }
 
@@ -24,6 +26,8 @@ class nbaplayercontroller extends Controller
      */
     public function create()
     {
+        $nbaplayer = nbaplayer::all();
+        return view('nbaplayer.AddPlayer', compact('nbaplayer'));
         //
     }
 
@@ -35,7 +39,23 @@ class nbaplayercontroller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'Player_Name' => 'required|string',
+            'Age' => 'required|string',
+            'Position' => 'required|string',
+            'Height' => 'required|string|unique:nbaplayer',
+            'Weight' => 'required|string',
+            'Nba_team' => 'required|select'
+        ]);
+
+        Rent::create([
+            'id_nbaplayers' => $data['Player_Name'],
+            'Age' => $data['Age'],
+            'Position' => $data['Position'],
+            'Height' => $data['Height'],
+            'Weight' => $data['Weight'],
+            'Nba_team' =>   $data['Nba_team'],
+        ]);
     }
 
     /**

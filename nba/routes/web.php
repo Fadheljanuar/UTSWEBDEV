@@ -1,5 +1,6 @@
 <?php
-
+use App\Http\Controllers\nbaplayercontroller;
+use App\Http\Controllers\nbateamcontroller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('nbateam.index');
+    return view('Home');
 });
 
 Route::resource('nbateam',nbateamcontroller::class);
+
+Route::resource('nbaplayer',nbaplayercontroller::class);
